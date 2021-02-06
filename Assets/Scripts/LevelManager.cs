@@ -42,12 +42,4 @@ public class LevelManager : MonoBehaviour
         ball.transform.position = Global.ballDefaultPosition;
         ball.Invoke("Start", 0.5f);
     }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
 }
