@@ -9,7 +9,7 @@ public class Global : MonoBehaviour
        Player1,
        Player2
     }
-    public static float playerVerticalSpeed  = 2;
+    public static float playerVerticalSpeed  = 5;
     public static int gameEndScore = 3;
     public static Vector3 ballDefaultPosition = Vector3.zero;
     public static Vector3 player1DefaultPosition = new Vector3(-8, 0, 0);

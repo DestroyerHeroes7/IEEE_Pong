@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rigidbody2D; 
     public void Start()
     {
-        rigidbody2D.AddForce((Vector2.up + Vector2.right) * 3, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * 5, ForceMode2D.Impulse);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
