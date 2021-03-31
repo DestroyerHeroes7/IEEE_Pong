@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public PowerUp SelectRandomPowerUp()
-    {
+    //public PowerUp SelectRandomPowerUp()
+    //{
 
-    }
+    //}
 }
 public enum PowerUpEnum
 {
