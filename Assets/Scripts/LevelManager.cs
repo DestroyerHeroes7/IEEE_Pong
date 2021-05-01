@@ -10,6 +10,11 @@ public class LevelManager : MonoBehaviour
     public int player1Score;
     public int player2Score;
 
+    public GameObject powerUpPrefab;
+
+    public float powerUpXBound;
+    public float powerUpYBound;
+
     public Transform player1;
     public Transform player2;
 
@@ -18,9 +23,13 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        InvokeRepeating("SpawnPowerUp", 5, 10);
+    }
     public void OnScore()
     {
-        SetDefaultPosition();
+        SetDefault();
         if (CheckEndGame())
             SceneManager.LoadScene(0);
     }
@@ -35,11 +44,19 @@ public class LevelManager : MonoBehaviour
         OnScore();
     }
     private bool CheckEndGame() => (player1Score >= Global.gameEndScore || player2Score >= Global.gameEndScore);
-    public void SetDefaultPosition()
+    public void SetDefault()
     {
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("PowerUp"))
+            Destroy(g);
         player1.position = Global.player1DefaultPosition;
         player2.position = Global.player2DefaultPosition;
         ball.transform.position = Global.ballDefaultPosition;
         ball.Invoke("Start", 0.5f);
+        CancelInvoke("SpawnPowerUp");
+        InvokeRepeating("SpawnPowerUp", 5, 10);
+    }
+    private void SpawnPowerUp()
+    {
+        Instantiate(powerUpPrefab, new Vector3(Random.Range(-powerUpXBound, powerUpXBound), Random.Range(-powerUpYBound, powerUpYBound)), Quaternion.identity);
     }
 }

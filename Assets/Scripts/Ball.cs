@@ -20,4 +20,20 @@ public class Ball : MonoBehaviour
             rigidbody2D.velocity = Vector2.zero;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PowerUp"))
+        {
+            switch (collision.GetComponent<PowerUp>().powerUpType)
+            {
+                case PowerUpEnum.BallSlowDown:
+                    rigidbody2D.velocity /= 2;
+                    break;
+                case PowerUpEnum.BallSpeedUp:
+                    rigidbody2D.velocity *= 2;
+                    break;
+            }
+            Destroy(collision.gameObject);
+        }
+    }
 }

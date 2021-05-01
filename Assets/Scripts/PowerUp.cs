@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    //public PowerUp SelectRandomPowerUp()
-    //{
-
-    //}
+    public PowerUpEnum powerUpType;
+    private void Start()
+    {
+        powerUpType = (PowerUpEnum)Random.Range(0, 4);
+    }
 }
 public enum PowerUpEnum
 {
