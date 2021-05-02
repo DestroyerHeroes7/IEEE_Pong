@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     public float powerUpXBound;
     public float powerUpYBound;
 
-    public Transform player1;
-    public Transform player2;
+    public Player player1;
+    public Player player2;
 
     public Ball ball;
     private void Awake()
@@ -48,9 +48,9 @@ public class LevelManager : MonoBehaviour
     {
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("PowerUp"))
             Destroy(g);
-        player1.position = Global.player1DefaultPosition;
-        player2.position = Global.player2DefaultPosition;
-        ball.transform.position = Global.ballDefaultPosition;
+        player1.SetDefault();
+        player2.SetDefault();
+        ball.SetDefault();
         ball.Invoke("Start", 0.5f);
         CancelInvoke("SpawnPowerUp");
         InvokeRepeating("SpawnPowerUp", 5, 10);
